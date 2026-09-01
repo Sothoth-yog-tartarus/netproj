@@ -1,0 +1,8 @@
+.vagrant/
+*.box
+*.msi
+*.exe
+tju_tcp/build/
+tju_tcp/client
+tju_tcp/server
+*.o
