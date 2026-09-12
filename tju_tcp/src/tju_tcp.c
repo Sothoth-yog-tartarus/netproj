@@ -378,7 +378,18 @@ uint8_t flags=get_flags(pkt);
         return 0;
     }
 
-    if(sock->state==ESTABLISHED && flags==NO_FLAG){
+    if(sock->state==ESTABLISHED &&(flags&ACK_FLAG_MASK) &&get_plen(pkt)==DEFAULT_HEADER_LEN){
+
+        uint32_t ack=get_ack(pkt);
+
+        if(ack>sock->snd_una){
+            sock->snd_una=ack;
+        }
+
+        return 0;
+    }//update3
+
+    if(sock->state==ESTABLISHED && !(flags&SYN_FLAG_MASK) && !(flags&FIN_FLAG_MASK)){
         uint32_t data_len=get_plen(pkt)-DEFAULT_HEADER_LEN;
 
         pthread_mutex_lock(&(sock->recv_lock));
