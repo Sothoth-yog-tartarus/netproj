@@ -60,6 +60,9 @@ typedef struct pending_pkt{
     struct timeval send_time; // 发送时间
     int retransmit_cnt;        // 重传次数
     struct pending_pkt* next;
+
+    int retransmitted;//0/1,未重传/重传
+
 } pending_pkt_t;
 
 // TCP 发送窗口
@@ -119,6 +122,9 @@ typedef struct {
     recv_block_t* ooo_head;//存乱序
 
     uint16_t last_advertised_wnd;
+
+    uint32_t used_size;      // 当前接收缓存已经使用大小
+    uint32_t capacity;       // 接收缓存最大容量
 
 } receiver_window_t;
 
