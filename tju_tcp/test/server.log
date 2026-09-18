@@ -1,4 +1,7 @@
+[INIT] wnd_send rwnd=65535
 Interrupted
+[ACK] ack=1804289384 (advance 1) rwnd=65535 rto=1.000s acked_bytes=0
+[RECV] seq=1804289384 len=16 rcv_nxt=1804289400 buf_used=16
 [RDT TEST] server recv test message0
 [RDT TEST] server recv test message1
 [RDT TEST] server recv test message2

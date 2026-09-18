@@ -52,6 +52,7 @@
 
 // TCP 接受窗口大小
 #define TCP_RECVWN_SIZE 32*MAX_DLEN // 比如最多放32个满载数据包
+//#define TCP_RECVWN_SIZE 128//测试零窗口用
 
 typedef struct pending_pkt{
     uint32_t seq;              // 数据段起始序号
